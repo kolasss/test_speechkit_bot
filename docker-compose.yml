@@ -1,0 +1,11 @@
+---
+version: '3'
+services:
+  app:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+    command: bin/bot
+    volumes:
+      - .:/ruby_app:cached
