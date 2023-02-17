@@ -4,7 +4,7 @@
 
 ```sh
 bundle install
-cp config/secrets.yml.sample config/secrets.yml
+cp config/secrets.sample.yml config/secrets.yml
 bin/bot
 ```
 ### Run in docker
