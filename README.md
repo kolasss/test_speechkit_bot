@@ -1,4 +1,4 @@
-# Yandex Speechkit telegram bot
+# Yandex SpeechKit telegram bot
 
 ## Usage
 

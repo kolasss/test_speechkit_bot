@@ -37,6 +37,4 @@ class SpeechkitBot
       MessageSender.new(bot: bot, chat: message.chat).send(text)
     end
   end
-
-  class Error < StandardError; end
 end

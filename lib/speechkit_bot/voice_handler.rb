@@ -19,7 +19,7 @@ class SpeechkitBot
       text = call_speechkit(data)
       send_message(text)
     rescue Error => e
-      SpeechkitBot.logger.error "ERROR: #{e.message}"
+      SpeechkitBot.logger.error(e.message)
       send_message(e.message)
     end
 

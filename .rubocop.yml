@@ -9,3 +9,7 @@ Style/Documentation:
 Naming/AccessorMethodName:
   Exclude:
     - 'lib/speechkit_bot/voice_handler.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
