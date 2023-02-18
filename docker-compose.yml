@@ -9,3 +9,12 @@ services:
     command: bin/bot
     volumes:
       - .:/ruby_app:cached
+    depends_on:
+      mongo:
+        condition: service_started
+  mongo:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+volumes:
+  mongodata:

@@ -6,6 +6,9 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Exclude:
     - 'lib/speechkit_bot/voice_handler.rb'

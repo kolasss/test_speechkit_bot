@@ -16,6 +16,8 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+ENV['RACK_ENV'] = 'test'
+
 require 'webmock/rspec'
 require 'vcr'
 require './lib/speechkit_bot'

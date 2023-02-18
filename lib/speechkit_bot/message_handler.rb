@@ -34,7 +34,7 @@ class SpeechkitBot
     end
 
     def send_message(text)
-      MessageSender.new(bot: bot, chat: message.chat).send(text)
+      MessageSender.new(api: bot.api, chat: message.chat).send(text)
     end
   end
 end

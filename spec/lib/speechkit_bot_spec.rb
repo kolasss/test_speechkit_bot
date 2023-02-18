@@ -27,13 +27,12 @@ RSpec.describe SpeechkitBot do
     let(:bot) { double }
 
     before do
-      allow(Telegram::Bot::Client).to receive(:run).and_yield(bot)
+      allow(Telegram::Bot::Client).to receive(:new).and_return(bot)
       allow(bot).to receive(:listen)
     end
 
     it 'calls telegram client' do
       run
-      expect(Telegram::Bot::Client).to have_received(:run)
       expect(bot).to have_received(:listen)
     end
   end

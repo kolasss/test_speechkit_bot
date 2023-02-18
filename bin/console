@@ -4,5 +4,6 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'bundler/setup'
 require './lib/speechkit_bot'
+require 'pry'
 
-SpeechkitBot.new.run
+Pry.start

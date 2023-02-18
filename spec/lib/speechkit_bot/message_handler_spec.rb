@@ -4,7 +4,7 @@ RSpec.describe SpeechkitBot::MessageHandler do
   describe '#respond' do
     subject(:respond) { described_class.new(bot, message).respond }
 
-    let(:bot) { double }
+    let(:bot) { double(api: {}) }
     let(:message) { double(chat: {}) }
     let(:sender) { double }
 
