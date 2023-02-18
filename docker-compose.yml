@@ -1,20 +1,41 @@
 ---
 version: '3'
+x-app: &app
+  image: test-speechkit-bot
+  tty: true
+  stdin_open: true
+  # build:
+  #   context: .
+  command: bin/bot
+  volumes:
+    - .:/ruby_app:cached
+  depends_on: &backend_depends_on
+    mongo:
+      condition: service_started
+    redis:
+      condition: service_started
+  environment:
+    REDIS_URL: redis://redis:6379/0
+    RACK_ENV: development
+
 services:
   app:
-    tty: true
-    stdin_open: true
+    <<: *app
     build:
       context: .
     command: bin/bot
-    volumes:
-      - .:/ruby_app:cached
     depends_on:
-      mongo:
+      <<: *backend_depends_on
+      sidekiq:
         condition: service_started
+  sidekiq:
+    <<: *app
+    command: bin/sidekiq -r ./initializers/sidekiq.rb
   mongo:
     image: mongo
     volumes:
       - mongodata:/data/db
+  redis:
+    image: redis
 volumes:
   mongodata:

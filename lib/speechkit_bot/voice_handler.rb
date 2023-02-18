@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'message_sender'
-require_relative 'voice_task_processor'
 require_relative '../models/voice_task'
+require_relative '../jobs/process_voice_task_job'
 
 class SpeechkitBot
   class VoiceHandler
@@ -36,9 +36,7 @@ class SpeechkitBot
     end
 
     def enqueue_job(voice_task)
-      # здесь будет создание джобы
-
-      VoiceTaskProcessor.new.call(voice_task.id)
+      ProcessVoiceTaskJob.perform_async(voice_task.id.to_s)
     end
 
     def send_message(text)

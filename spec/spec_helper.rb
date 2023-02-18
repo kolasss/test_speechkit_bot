@@ -17,6 +17,7 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 ENV['RACK_ENV'] = 'test'
+ENV['REDIS_URL'] = 'redis://redis:6379/1'
 
 require 'webmock/rspec'
 require 'vcr'
