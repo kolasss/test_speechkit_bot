@@ -26,5 +26,14 @@ docker-compose up
 ```sh
 docker-compose build
 docker-compose run app bash
-rspec
+```
+
+run tests
+```sh
+bundle exec rspec
+```
+
+run rubocop
+```sh
+bundle exec rubocop
 ```

@@ -19,8 +19,12 @@
 ENV['RACK_ENV'] = 'test'
 ENV['REDIS_URL'] = 'redis://redis:6379/1'
 
+require 'database_cleaner/mongoid'
 require 'webmock/rspec'
 require 'vcr'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
 require './lib/speechkit_bot'
 
 RSpec.configure do |config|
@@ -101,6 +105,16 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+
+  config.before(:suite) do
+    DatabaseCleaner.clean
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
 
 VCR.configure do |config|

@@ -20,7 +20,7 @@ RSpec.describe SpeechkitBot::MessageHandler do
     end
 
     context 'with voice message' do
-      let(:message) { instance_double('Telegram::Bot::Types::Message', chat: {}, voice: {}) }
+      let(:message) { instance_double('Telegram::Bot::Types::Message', voice: {}) }
       let(:voice_handler) { double }
 
       before do

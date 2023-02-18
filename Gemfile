@@ -19,6 +19,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'database_cleaner-mongoid'
   gem 'vcr'
   gem 'webmock'
 end

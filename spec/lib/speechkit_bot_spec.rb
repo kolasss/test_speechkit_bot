@@ -35,5 +35,23 @@ RSpec.describe SpeechkitBot do
       run
       expect(bot).to have_received(:listen)
     end
+
+    it 'enqueues job' do
+      expect { run }.to change(NotProcessedVoiceTasksJob.jobs, :size).by(1)
+    end
+  end
+
+  describe '#telegram_client' do
+    subject(:telegram_client) { described_class.new.telegram_client }
+
+    let(:bot) { double }
+
+    before do
+      allow(Telegram::Bot::Client).to receive(:new).and_return(bot)
+    end
+
+    it 'returns bot' do
+      expect(telegram_client).to eq(bot)
+    end
   end
 end

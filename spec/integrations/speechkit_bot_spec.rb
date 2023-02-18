@@ -5,7 +5,7 @@ RSpec.describe 'running bot' do
     thread = Thread.new do
       SpeechkitBot.new.run
     end
-    sleep(0.1)
+    sleep(0.3)
     thread.kill
   end
 
@@ -55,21 +55,27 @@ RSpec.describe 'running bot' do
   end
 
   context 'with voice message' do
-    before do
-      VCR.use_cassette 'with_voice_message', preserve_exact_body_bytes: true, allow_playback_repeats: true do
+    subject(:run_with_cassette) do
+      VCR.use_cassette(
+        'with_voice_message',
+        # preserve_exact_body_bytes: true,
+        allow_playback_repeats: true,
+        record: :new_episodes
+      ) do
         run
       end
     end
 
-    it 'calls yandex speechkit api' do
-      expect(a_request(:put, 'https://stt.api.cloud.yandex.net/speech/v1/stt:recognize')).to have_been_made
+    it 'creates VoiceTask' do
+      expect { run_with_cassette }.to change(VoiceTask, :count).by(1)
     end
 
-    it 'downloads file' do
-      expect(a_request(:get, "https://api.telegram.org/file/bot#{token}/voice/file_4.oga")).to have_been_made
+    it 'enqueues job' do
+      expect { run_with_cassette }.to change(ProcessVoiceTaskJob.jobs, :size).by(1)
     end
 
     it 'sends message to chat' do
+      run_with_cassette
       expect(a_request(
         :post,
         "https://api.telegram.org/bot#{token}/sendMessage"
