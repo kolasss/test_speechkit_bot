@@ -21,9 +21,9 @@ class ProcessVoiceTaskJob
 
     return unless result[:need_retry]
 
-    raise ExceptionRecognitionStatusRetry if result[:step] == :recognition_status
+    raise ExceptionRecognitionStatusRetry, "step: #{result[:step]}" if result[:step] == :recognition_status
 
-    raise ExceptionStandartRetry
+    raise ExceptionStandartRetry, "step: #{result[:step]}"
   end
 
   class ExceptionStandartRetry < StandardError; end

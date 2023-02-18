@@ -5,6 +5,7 @@ require 'yaml'
 require_relative '../initializers/mongoid'
 require_relative '../initializers/shrine'
 require_relative 'speechkit_bot/message_handler'
+require_relative 'jobs/not_processed_voice_tasks_job'
 
 require 'pry'
 
@@ -26,6 +27,8 @@ class SpeechkitBot
   end
 
   def run
+    enqueue_voice_tasks
+
     bot = telegram_client
     bot.listen do |message|
       SpeechkitBot.logger.debug "@#{message.from.username}: #{message.text}"
@@ -41,4 +44,10 @@ class SpeechkitBot
   end
 
   class Error < StandardError; end
+
+  private
+
+  def enqueue_voice_tasks
+    NotProcessedVoiceTasksJob.perform_async
+  end
 end

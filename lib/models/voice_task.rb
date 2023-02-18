@@ -18,4 +18,6 @@ class VoiceTask
   validates :status, presence: true, inclusion: { in: STATUSES }
 
   index({ status: 1 })
+
+  scope :not_finished, -> { VoiceTask.not(status: 'sent_to_user') }
 end
