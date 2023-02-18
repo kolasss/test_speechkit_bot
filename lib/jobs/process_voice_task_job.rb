@@ -11,6 +11,8 @@ class ProcessVoiceTaskJob
     case exception
     when ExceptionRecognitionStatusRetry
       30
+    when Mongoid::Errors::DocumentNotFound
+      :kill
     else
       (count**4) + 15
     end

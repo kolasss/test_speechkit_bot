@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://operation.api.cloud.yandex.net/operations/eoiruwe123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Api-Key key2234
+      User-Agent:
+      - Faraday v2.7.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 18 Feb 2023 19:10:14 GMT
+      Server:
+      - envoy
+      X-Envoy-Response-Flags:
+      - NR
+      X-Server-Trace-Id:
+      - 85ea19f86c429c9:8b2a8a18d9796c1:85ea19f86c429c9:1
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "done": false,
+          "response": {
+          },
+          "id": "e03sup6d5h1qr574ht99",
+          "createdAt": "2019-04-21T22:49:29Z",
+          "createdBy": "ajes08feato88ehbbhqq",
+          "modifiedAt": "2019-04-21T22:49:36Z"
+        }
+  recorded_at: Sat, 18 Feb 2023 19:10:14 GMT
+recorded_with: VCR 6.1.0

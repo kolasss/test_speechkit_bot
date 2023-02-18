@@ -2,3 +2,5 @@ config/secrets.yml
 config/shrine.yml
 log/*.log
 spec/examples.txt
+tmp/*
+!/tmp/.keep

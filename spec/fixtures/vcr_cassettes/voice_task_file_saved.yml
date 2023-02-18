@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://transcribe.api.cloud.yandex.net/speech/stt/v2/longRunningRecognize
+    body:
+      encoding: UTF-8
+      string: '{"config":{"specification":{"languageCode":"auto"}},"audio":{"uri":"/uploads/store/9d113cf325607ab39d109092d4a3536d.oga"}}'
+    headers:
+      Authorization:
+      - Api-Key key2234
+      User-Agent:
+      - Faraday v2.7.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      X-Request-Id:
+      - 2cf4937b-1a3c-4440-ba0b-5065421ca9be
+      Content-Length:
+      - '441'
+      Date:
+      - Sat, 18 Feb 2023 18:18:50 GMT
+      Server:
+      - envoy
+      X-Server-Trace-Id:
+      - b3070d80b67b4e07:c5749cec6e77931d:b3070d80b67b4e07:1
+    body:
+      encoding: UTF-8
+      string: '{"done": false, "id": "e03sup6d5h7rq574ht8g", "createdAt": "2019-04-21T22:49:29Z", "createdBy": "ajes08feato88ehbbhqq", "modifiedAt": "2019-04-21T22:49:29Z"}'
+  recorded_at: Sat, 18 Feb 2023 19:05:19 GMT
+recorded_with: VCR 6.1.0

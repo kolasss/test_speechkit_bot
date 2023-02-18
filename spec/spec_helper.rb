@@ -115,6 +115,10 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir['./tmp/uploads'])
+  end
 end
 
 VCR.configure do |config|

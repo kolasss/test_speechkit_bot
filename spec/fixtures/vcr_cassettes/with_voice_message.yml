@@ -42,7 +42,7 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {"ok":true,"result":[{"update_id":61510816,
-        "message":{"message_id":86,"from":{"id":71043908,"is_bot":false,"first_name":"kolas","username":"kolas_b","language_code":"ru"},"chat":{"id":71043908,"first_name":"kolas","username":"kolas_b","type":"private"},"date":1676739412,"forward_from":{"id":71043908,"is_bot":false,"first_name":"kolas","username":"kolas_b","language_code":"ru"},"forward_date":1676632956,"voice":{"duration":1,"mime_type":"audio/ogg","file_id":"AwACAgIAAxkBAANWY_EDVBKC9a4dgAkhZV7EgPk4hDEAAocjAAIapYBLHz_1yie2ERwuBA","file_unique_id":"AgADhyMAAhqlgEs","file_size":35480}}}]}
+        "message":{"message_id":86,"from":{"id":71043908,"is_bot":false,"first_name":"user_test_name","username":"test_name","language_code":"ru"},"chat":{"id":71043908,"first_name":"user_test_name","username":"test_name","type":"private"},"date":1676739412,"forward_from":{"id":71043908,"is_bot":false,"first_name":"user_test_name","username":"test_name","language_code":"ru"},"forward_date":1676632956,"voice":{"duration":1,"mime_type":"audio/ogg","file_id":"AwACAgIAAxkBAANWY_EDVBKC9a4dgAkhZV7EgPk4hDEAAocjAAIapYBLHz_1yie2ERwuBA","file_unique_id":"AgADhyMAAhqlgEs","file_size":35480}}}]}
   recorded_at: Sat, 18 Feb 2023 16:57:00 GMT
 - request:
     method: post
@@ -84,7 +84,7 @@ http_interactions:
       - Content-Length,Content-Type,Date,Server,Connection
     body:
       encoding: UTF-8
-      string: '{"ok":true,"result":{"message_id":87,"from":{"id":5904965027,"is_bot":true,"first_name":"test_speechkit_not","username":"test_speechkit_bot"},"chat":{"id":71043908,"first_name":"kolas","username":"kolas_b","type":"private"},"date":1676739554,"text":"\u0413\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u0435
+      string: '{"ok":true,"result":{"message_id":87,"from":{"id":5904965027,"is_bot":true,"first_name":"test_speechkit_not","username":"test_speechkit_bot"},"chat":{"id":71043908,"first_name":"user_test_name","username":"test_name","type":"private"},"date":1676739554,"text":"\u0413\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u0435
         \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u043e,
         \u0440\u0430\u0441\u043f\u043e\u0437\u043d\u043e\u0432\u0430\u043d\u0438\u0435
         \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u043e..."}}'
