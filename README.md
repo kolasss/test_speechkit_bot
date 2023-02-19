@@ -37,7 +37,7 @@ docker-compose up
 
 ```sh
 docker-compose build
-docker-compose run app bash
+docker-compose run --service-ports app bash
 ```
 
 run tests

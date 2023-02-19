@@ -4,9 +4,6 @@ x-app: &app
   image: test-speechkit-bot
   tty: true
   stdin_open: true
-  # build:
-  #   context: .
-  command: bin/bot
   volumes:
     - .:/ruby_app:cached
   depends_on: &backend_depends_on

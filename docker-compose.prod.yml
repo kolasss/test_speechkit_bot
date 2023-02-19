@@ -1,0 +1,70 @@
+---
+version: '3'
+x-app: &app
+  image: test-speechkit-bot
+  tty: true
+  stdin_open: true
+  volumes:
+    - .:/ruby_app:cached
+  depends_on: &backend_depends_on
+    mongo:
+      condition: service_started
+    redis:
+      condition: service_started
+  environment:
+    REDIS_URL: redis://redis:6379/0
+    RACK_ENV: development
+
+services:
+  app:
+    <<: *app
+    build:
+      context: .
+    command: bin/puma
+    ports:
+      - '9292:9292'
+    depends_on:
+      <<: *backend_depends_on
+      sidekiq:
+        condition: service_started
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`se.kolas.dev`)"
+      - "traefik.http.routers.web.entrypoints=websecure"
+      - "traefik.http.routers.web.tls.certresolver=myresolver"
+  sidekiq:
+    <<: *app
+    command: bin/sidekiq -r ./initializers/sidekiq.rb
+  mongo:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+  redis:
+    image: redis
+
+  reverse-proxy:
+    # The official v2 Traefik docker image
+    image: traefik:v2.9
+    # Enables the web UI and tells Traefik to listen to docker
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      # - "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.email=kolas.krytoi@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      # The HTTP port
+      # - "80:80"
+      - "443:443"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "./letsencrypt:/letsencrypt"
+
+volumes:
+  mongodata:
