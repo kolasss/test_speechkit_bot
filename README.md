@@ -49,3 +49,20 @@ run rubocop
 ```sh
 bundle exec rubocop
 ```
+
+### Configure webhook
+
+set
+```sh
+rake webhook:set['https://example.com/webhook']
+```
+
+delete
+```sh
+rake webhook:delete
+```
+
+show info
+```sh
+rake webhook:get
+```
