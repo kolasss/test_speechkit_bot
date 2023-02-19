@@ -60,7 +60,7 @@ http_interactions:
     uri: https://api.telegram.org/bot123token/sendMessage
     body:
       encoding: UTF-8
-      string: chat_id=71012308&text=%D1%82%D0%B2%D0%BE%D0%B9+%D0%BD%D0%BE%D0%BC%D0%B5%D1%80+212-85-06
+      string: chat_id=71012308&reply_to_message_id=34&text=%D1%82%D0%B2%D0%BE%D0%B9+%D0%BD%D0%BE%D0%BC%D0%B5%D1%80+212-85-06
     headers:
       User-Agent:
       - Faraday v2.7.4

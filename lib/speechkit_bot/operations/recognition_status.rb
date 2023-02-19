@@ -32,7 +32,7 @@ module SpeechkitBot::Operations
 
     def send_message(voice_task, text)
       chat = Telegram::Bot::Types::Chat.new voice_task.message_data[:chat]
-      SpeechkitBot::MessageSender.new(chat: chat).send(text)
+      SpeechkitBot::MessageSender.new(chat: chat).send(text, reply_to_message_id: voice_task.message_data[:message_id])
     end
 
     def update(voice_task, text)

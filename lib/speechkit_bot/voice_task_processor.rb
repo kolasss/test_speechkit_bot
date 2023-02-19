@@ -15,6 +15,7 @@ class SpeechkitBot
       when 'initialized' then process_file(voice_task)
       when 'file_saved' then call_speechkit(voice_task)
       when 'sent_to_speechkit' then recognition_operation_status(voice_task)
+      else format_result(false, :other_status)
       end
     end
 
