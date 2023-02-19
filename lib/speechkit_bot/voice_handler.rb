@@ -6,10 +6,10 @@ require_relative '../jobs/process_voice_task_job'
 
 class SpeechkitBot
   class VoiceHandler
-    attr_reader :message, :bot
+    attr_reader :message, :api
 
-    def initialize(bot, message)
-      @bot = bot
+    def initialize(api, message)
+      @api = api
       @message = message
     end
 
@@ -40,7 +40,7 @@ class SpeechkitBot
     end
 
     def send_message(text)
-      MessageSender.new(api: bot.api, chat: message.chat).send(text)
+      MessageSender.new(api: api, chat: message.chat).send(text)
     end
   end
 end

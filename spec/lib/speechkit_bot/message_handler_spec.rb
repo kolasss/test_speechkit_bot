@@ -2,9 +2,9 @@
 
 RSpec.describe SpeechkitBot::MessageHandler do
   describe '#respond' do
-    subject(:respond) { described_class.new(bot, message).respond }
+    subject(:respond) { described_class.new(api, message).respond }
 
-    let(:bot) { double(api: {}) }
+    let(:api) { double }
     let(:message) { double(chat: {}) }
     let(:sender) { double }
 
@@ -31,7 +31,7 @@ RSpec.describe SpeechkitBot::MessageHandler do
 
       it 'calls VoiceHandler' do
         respond
-        expect(SpeechkitBot::VoiceHandler).to have_received(:new).with(bot, message)
+        expect(SpeechkitBot::VoiceHandler).to have_received(:new).with(api, message)
         expect(voice_handler).to have_received(:call)
       end
     end

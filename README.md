@@ -2,14 +2,26 @@
 
 ## Usage
 
+install and configure
 ```sh
 bundle install
 cp config/secrets.sample.yml config/secrets.yml
 cp config/shrine.sample.yml config/shrine.yml
+```
+
+### You can use bot listener or puma server
+
+start bot with long polling
+```sh
 bin/bot
 ```
 
-start background tasks runner
+start http server with webhook
+```sh
+bin/puma
+```
+
+### Start background tasks runner
 ```sh
 bin/sidekiq -r ./initializers/sidekiq.rb
 ```

@@ -32,7 +32,7 @@ class SpeechkitBot
     bot = telegram_client
     bot.listen do |message|
       SpeechkitBot.logger.debug "@#{message.from.username}: #{message.text}"
-      MessageHandler.new(bot, message).respond
+      MessageHandler.new(bot.api, message).respond
     end
   end
 

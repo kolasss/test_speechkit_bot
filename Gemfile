@@ -12,6 +12,9 @@ gem 'aws-sdk-s3', '~> 1.14'
 gem 'mongoid'
 gem 'shrine-mongoid'
 
+gem 'puma'
+gem 'sinatra', '~> 3'
+
 group :development, :test do
   gem 'pry'
   gem 'rspec'
@@ -20,6 +23,7 @@ end
 
 group :test do
   gem 'database_cleaner-mongoid'
+  gem 'rack-test'
   gem 'vcr'
   gem 'webmock'
 end

@@ -24,10 +24,12 @@ services:
     build:
       context: .
     command: bin/bot
-    depends_on:
-      <<: *backend_depends_on
-      sidekiq:
-        condition: service_started
+    ports:
+      - '9292:9292'
+    # depends_on:
+    #   <<: *backend_depends_on
+    #   sidekiq:
+    #     condition: service_started
   sidekiq:
     <<: *app
     command: bin/sidekiq -r ./initializers/sidekiq.rb

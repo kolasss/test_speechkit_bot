@@ -24,6 +24,7 @@ require 'webmock/rspec'
 require 'vcr'
 require 'sidekiq/testing'
 Sidekiq::Testing.fake!
+require 'rack/test'
 
 require './lib/speechkit_bot'
 
